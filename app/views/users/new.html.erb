@@ -1,0 +1,35 @@
+<!-- app/views/users/new.html.erb -->
+<div class='container'>
+
+<h1>Sign Up</h1>
+<%= form_with model: @user do |f| %>
+  <% if @user.errors.any? %>
+    <div>
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div >
+  <%= f.label :name %><br>
+  <%= f.text_field :name %>
+</div>
+  <div>
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div>
+    <%= f.label :password %><br>
+    <%= f.password_field :password %>
+  </div>
+  <p><br>
+    <%= f.submit %>
+  </p>
+   <p> Already have an account? </p>
+  <%= link_to 'Login', new_user_session_path %><br>
+<% end %>
+  </div>
+

@@ -1,0 +1,80 @@
+<!-- app/views/users/index.html.erb -->
+
+<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+    <a href=<%= users_path %>>
+        <img src="/assets/logo.svg" alt="Logo" height="35", width="auto">User Management Portal
+  </a>
+   <span style="float:right;">
+     <h6>Welcome, <%= current_user.name %></h6>
+    <%= link_to "Log Out", logout_path , method: "delete"%>
+  </span>
+</nav>
+
+<div class="container">
+  <!-- Content here -->
+   <div style="margin-top: 50px; margin-bottom: 20px;">
+
+<div class="container">
+<%= form_tag(users_block_path, method: :put, id: 'block_form') do %>
+<%= button_tag(type: 'submit',  :name => 'block',class: "btn btn-outline-warning action-button",form: 'block_form' ) do %>
+ <i class="bi bi-lock-fill"></i>Block
+<% end %>&nbsp;
+<%= button_tag(type: 'submit',  :name => 'unblock',class: "btn btn-outline-primary action-button", form: 'block_form' ) do %>
+ <i class="bi bi-unlock-fill"></i>
+<% end %>&nbsp;
+<%= button_tag(type: 'submit',  :name => 'remove',class: "btn btn-outline-danger action-button", form: 'block_form' ) do %>
+ <i class="bi bi-trash-fill"></i>
+<% end %>
+
+
+      </div>
+      </div>
+      <hr>
+
+      <table style="width:100%">
+        <thead>
+          <tr>
+            <th><input type="checkbox" id="select_all"></th>
+            <th>Name</th> 
+            <th>E-mail</th> 
+            <th>Last login time</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <td><%= check_box_tag 'user_ids[]', user.id %></td>
+              <td><%= user.name %></td>
+              <td><%= user.email %></td>
+              <td><%= user.last_login %></td>
+              <td><%= user.status %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+<% end %>
+</div>
+
+     
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Select all checkboxes
+    document.getElementById('select_all').addEventListener('change', function () {
+      var checkboxes = document.querySelectorAll('tbody input[type="checkbox"]');
+      checkboxes.forEach(function (checkbox) {
+        checkbox.checked = this.checked;
+      }, this);
+    });
+
+    // Submit form when action button is clicked
+    document.querySelectorAll('.action-button').forEach(function (button) {
+      button.addEventListener('click', function () {
+        var formId = this.dataset.formId;
+        document.getElementById(formId).submit();
+      });
+    });
+  });
+</script>
