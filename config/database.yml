@@ -73,13 +73,10 @@
 # Configure Using Gemfile
 # gem "pg"
 #
-development: &default_settings
+default: &default
   adapter: postgresql
-  host: localhost
-  database: database_name
-  username: username
-  password: password
   encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   <<: *default
