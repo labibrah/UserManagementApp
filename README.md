@@ -1,24 +1,17 @@
-# README
+# User Management App
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Ruby on Rails app which allows users to block, unblock and delete all registered users.
 
-Things you may want to cover:
+##  Link to demo video
 
-* Ruby version
+https://youtu.be/LurYODq79sQ
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Features worked on
+- Sign-up page with encrypted password storage
+- Login page
+- Header with clickable logo, user name and log out option
+- Buttons with icon and styling to block, delete and unblock
+- block, delete and unblock functionality in database
+- Blocked user cannot login
+- Deleted user can sign up again
+- Last login time update functionality
