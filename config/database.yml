@@ -73,24 +73,24 @@
 # Configure Using Gemfile
 # gem "pg"
 #
-default: &default
-  adapter: postgresql
-  encoding: unicode
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+# default: &default
+#   adapter: postgresql
+#   encoding: unicode
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-development:
-  <<: *default
-  database: user_manager_development
+# development:
+#   <<: *default
+#   database: user_manager_development
 
-test:
-  <<: *default
-  database: user_manager_test
+# test:
+#   <<: *default
+#   database: user_manager_test
 
-  production:
-  <<: *default
-  database: user_manager_production
-  username: user_manager
-  password: <%= ENV["USER_MANAGER_DATABASE_PASSWORD"] %>
+#   production:
+#   <<: *default
+#   database: user_manager_production
+#   username: user_manager
+#   password: <%= ENV["USER_MANAGER_DATABASE_PASSWORD"] %>
 
   # The specified database role being used to connect to PostgreSQL.
   # To create additional roles in PostgreSQL see `$ createuser --help`.
