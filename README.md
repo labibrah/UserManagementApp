@@ -2,6 +2,10 @@
 
 Ruby on Rails app which allows users to block, unblock and delete all registered users.
 
+##  Link to hosted site
+
+https://user-manager-s6qp.onrender.com/
+
 ##  Link to demo video
 
 https://youtu.be/LurYODq79sQ
