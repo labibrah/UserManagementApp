@@ -1,6 +1,7 @@
 # User Management App
 
 Ruby on Rails app which allows users to block, unblock and delete all registered users.
+![Preview](app/assets/images/Example.png?raw=true "Title")
 
 ##  Link to hosted site
 
