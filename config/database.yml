@@ -54,13 +54,14 @@
 #   username: user_manager
 #   password: <%= ENV["USER_MANAGER_DATABASE_PASSWORD"] %>
 
-
 default: &default
   adapter: postgresql
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
+  username: postgres
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  password: 123
 
 development:
   <<: *default
