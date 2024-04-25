@@ -9,24 +9,24 @@
 # And be sure to use new-style password hashing:
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
-default: &default
-  adapter: mysql2
-  encoding: utf8mb4
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: mypassword
-  socket: /tmp/mysql.sock
+# default: &default
+#   adapter: mysql2
+#   encoding: utf8mb4
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   username: root
+#   password: mypassword
+#   socket: /tmp/mysql.sock
 
-development:
-  <<: *default
-  database: user_manager_development
+# development:
+#   <<: *default
+#   database: user_manager_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
-  <<: *default
-  database: user_manager_test
+# test:
+#   <<: *default
+#   database: user_manager_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -48,8 +48,29 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
+# production:
+#   <<: *default
+#   database: user_manager_production
+#   username: user_manager
+#   password: <%= ENV["USER_MANAGER_DATABASE_PASSWORD"] %>
+
+
+default: &default
+  adapter: sqlite3
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+
+development:
+  <<: *default
+  database: storage/development.sqlite3
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  <<: *default
+  database: storage/test.sqlite3
+
 production:
   <<: *default
-  database: user_manager_production
-  username: user_manager
-  password: <%= ENV["USER_MANAGER_DATABASE_PASSWORD"] %>
+  database: storage/production.sqlite3
