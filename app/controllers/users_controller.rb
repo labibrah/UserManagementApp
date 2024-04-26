@@ -16,6 +16,13 @@ class UsersController < ApplicationController
       selected_user_ids = params[:user_ids]
 
     puts "Selected User IDs: #{params.inspect}"
+    puts "Current User: #{current_user.inspect}"
+       if current_user.status == 'Blocked'
+         redirect_to logout_path
+        return
+       end
+
+
     if params.has_key?(:unblock)
       # uncomment
     # if params[:unblock].present?
@@ -39,6 +46,10 @@ class UsersController < ApplicationController
         redirect_to logout_path
         return
     end
+  #   if current_user.blank?
+  #     redirect_to logout_path
+  #     return
+  # end
   redirect_to users_path
     
 
